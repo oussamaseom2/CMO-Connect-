@@ -24,10 +24,13 @@ public class Utilisateur {
     private String autoProvider;  // Fournisseur automatique (si applicable)
 
     @ElementCollection
-    private List<String> portFolio;  // Liste de portfolios de type String
+    private List<String> portFolios;  // Liste de portfolios de type String
 
     @Enumerated(EnumType.STRING)
     private UtilisateurRole role;  // Rôle de l'utilisateur (Admin, Candidat, etc.)
+
+    public void setId(Long id) {
+    }
 
     // Getters et Setters
 }

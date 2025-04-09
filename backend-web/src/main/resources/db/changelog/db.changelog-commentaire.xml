@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="3" author="admin">
+        <createTable tableName="commentaire">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="utilisateur_id" type="bigint"/>
+            <column name="offre_id" type="bigint"/>
+            <column name="contenu" type="text"/>
+            <column name="datePublication" type="timestamp"/>
+            <column name="dateModification" type="timestamp"/>
+            <column name="estArchive" type="boolean"/>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="commentaire"
+                baseColumnNames="utilisateur_id"
+                referencedTableName="utilisateur"
+                referencedColumnNames="id"
+                constraintName="fk_commentaire_utilisateur" />
+
+        <addForeignKeyConstraint
+                baseTableName="commentaire"
+                baseColumnNames="offre_id"
+                referencedTableName="offre"
+                referencedColumnNames="id"
+                constraintName="fk_commentaire_offre" />
+    </changeSet>
+
+</databaseChangeLog>

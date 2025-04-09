@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="2" author="admin">
+        <createTable tableName="offre">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="titre" type="varchar(255)"/>
+            <column name="description" type="text"/>
+            <column name="localisation" type="varchar(255)"/>
+            <column name="prix" type="decimal"/>
+            <column name="dateCreation" type="timestamp"/>
+            <column name="secure" type="varchar(255)"/>
+            <column name="estArchive" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

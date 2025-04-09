@@ -2,6 +2,8 @@ package com.cmoconnect.backendweb.model;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 public class Abonnement {
     @Id

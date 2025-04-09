@@ -2,6 +2,9 @@ package com.cmoconnect.backendweb.model;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+import java.util.List;
+
 @Entity
 public class FormationUtilisateur {
     @Id
@@ -19,7 +22,7 @@ public class FormationUtilisateur {
     private Float progression;  // Progrès dans la formation
 
     @OneToMany(mappedBy = "formationUtilisateur")
-    private List<Chapter> completedChapters;  // Chapitres terminés
+    private List<Chapitre> completedChapters;  // Chapitres terminés
 
     private String description;  // Description de la formation
     private Date dateDebut;  // Date de début de la formation
