@@ -1,9 +1,68 @@
+version: '3.8'
+
 services:
-  postgres:
-    image: 'postgres:latest'
+  backend-web-postgres:
+    image: postgres:latest
+    container_name: cmo-connect-db
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      POSTGRES_USER: CMO
+      POSTGRES_PASSWORD: CMO_password
+      POSTGRES_DB: cmo_connect
+      POSTGRES_INITDB_ARGS: '--encoding=UTF-8 --locale=C'
     ports:
-      - '5432'
+      - "56010:5432"
+    volumes:
+      - backend-web-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U CMO"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - cmo-network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: cmo-connect-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      backend-web-postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - cmo-network
+
+  backend-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cmo-connect-backend
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://backend-web-postgres:5432/cmo_connect
+      - SPRING_DATASOURCE_USERNAME=CMO
+      - SPRING_DATASOURCE_PASSWORD=CMO_password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      backend-web-postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - cmo-network
+
+volumes:
+  backend-web-postgres-data:
+  pgadmin_data:
+
+networks:
+  cmo-network:
+    driver: bridge

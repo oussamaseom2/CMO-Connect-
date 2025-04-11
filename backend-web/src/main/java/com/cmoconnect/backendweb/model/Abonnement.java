@@ -24,4 +24,59 @@ public class Abonnement {
     private Boolean renouvellementAutomatique;  // Indicateur du renouvellement automatique
 
     // Getters et Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    public TypePayAbonnement getTypePayAbonnement() {
+        return typePayAbonnement;
+    }
+
+    public void setTypePayAbonnement(TypePayAbonnement typePayAbonnement) {
+        this.typePayAbonnement = typePayAbonnement;
+    }
+
+    public Float getPrixTotal() {
+        return prixTotal;
+    }
+
+    public void setPrixTotal(Float prixTotal) {
+        this.prixTotal = prixTotal;
+    }
+
+    public Date getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(Date dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public Date getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
+    }
+
+    public Boolean getRenouvellementAutomatique() {
+        return renouvellementAutomatique;
+    }
+
+    public void setRenouvellementAutomatique(Boolean renouvellementAutomatique) {
+        this.renouvellementAutomatique = renouvellementAutomatique;
+    }
 }

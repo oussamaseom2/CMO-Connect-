@@ -38,7 +38,12 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.BackendWebApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/hp/IdeaProjects/CMO connect/backend-web/src/main/java/com/cmoconnect/backendweb&quot;,
@@ -82,7 +87,9 @@
       <updated>1744141184470</updated>
       <workItem from="1744141185564" duration="1131000" />
       <workItem from="1744186625278" duration="12179000" />
-      <workItem from="1744208766560" duration="7690000" />
+      <workItem from="1744208766560" duration="21821000" />
+      <workItem from="1744294243611" duration="9692000" />
+      <workItem from="1744368423391" duration="4838000" />
     </task>
     <servers />
   </component>

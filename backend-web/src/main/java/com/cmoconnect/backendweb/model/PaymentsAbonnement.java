@@ -29,4 +29,99 @@ public class PaymentsAbonnement {
     private Date dateExpiration;  // Date d'expiration du paiement
 
     // Getters et Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    public TypePayAbonnement getTypePayAbonnement() {
+        return typePayAbonnement;
+    }
+
+    public void setTypePayAbonnement(TypePayAbonnement typePayAbonnement) {
+        this.typePayAbonnement = typePayAbonnement;
+    }
+
+    public Date getDatePay() {
+        return datePay;
+    }
+
+    public void setDatePay(Date datePay) {
+        this.datePay = datePay;
+    }
+
+    public String getNumeroCarte() {
+        return numeroCarte;
+    }
+
+    public void setNumeroCarte(String numeroCarte) {
+        this.numeroCarte = numeroCarte;
+    }
+
+    public String getMMIYY() {
+        return MMIYY;
+    }
+
+    public void setMMIYY(String MMIYY) {
+        this.MMIYY = MMIYY;
+    }
+
+    public String getCVC() {
+        return CVC;
+    }
+
+    public void setCVC(String CVC) {
+        this.CVC = CVC;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getAddress1() {
+        return address1;
+    }
+
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public Date getDateExpiration() {
+        return dateExpiration;
+    }
+
+    public void setDateExpiration(Date dateExpiration) {
+        this.dateExpiration = dateExpiration;
+    }
 }

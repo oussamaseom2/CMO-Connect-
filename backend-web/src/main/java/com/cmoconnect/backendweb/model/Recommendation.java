@@ -14,7 +14,12 @@ public class Recommendation {
     @JoinColumn(name = "utilisateurRecevant_id")
     private Utilisateur utilisateurRecevant;
 
-    @ManyToMany(mappedBy = "utilisateursRecommandes")
+    @ManyToMany
+    @JoinTable(
+        name = "recommandation_utilisateur",
+        joinColumns = @JoinColumn(name = "recommendation_id"),
+        inverseJoinColumns = @JoinColumn(name = "utilisateur_id")
+    )
     private List<Utilisateur> utilisateursRecommandes;
 
     @ManyToOne

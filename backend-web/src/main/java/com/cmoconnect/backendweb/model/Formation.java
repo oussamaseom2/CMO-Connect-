@@ -1,15 +1,25 @@
 package com.cmoconnect.backendweb.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.List;
+
+
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 public class Formation {
+
+    // Getters et Setters
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @OneToMany(mappedBy = "formation", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Chapitre> chapitres; // Liste des chapitres associés à la formation
 
     private String titre;  // Titre de la formation
     private String description;  // Description de la formation
@@ -21,6 +31,21 @@ public class Formation {
     private Integer nbreInscription;  // Nombre d'inscriptions à la formation
     private String quiz;  // Quiz associé à la formation
 
-    // Getters et Setters
-}
 
+    // Optionnel: méthode toString pour faciliter la lecture des objets
+    @Override
+    public String toString() {
+        return "Formation{" +
+                "id=" + id +
+                ", titre='" + titre + '\'' +
+                ", description='" + description + '\'' +
+                ", duree=" + duree +
+                ", nbreChapitre=" + nbreChapitre +
+                ", type='" + type + '\'' +
+                ", prix=" + prix +
+                ", eSatisfait=" + eSatisfait +
+                ", nbreInscription=" + nbreInscription +
+                ", quiz='" + quiz + '\'' +
+                '}';
+    }
+}
