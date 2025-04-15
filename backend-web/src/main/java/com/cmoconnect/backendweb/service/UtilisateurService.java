@@ -1,45 +1,69 @@
 package com.cmoconnect.backendweb.service;
 
 import com.cmoconnect.backendweb.model.Utilisateur;
+import com.cmoconnect.backendweb.model.UtilisateurRole;
 import com.cmoconnect.backendweb.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UtilisateurService {
 
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
-    // Récupérer tous les utilisateurs
-    public List<Utilisateur> getAllUsers() {
-        return utilisateurRepository.findAll();
-    }
-
-    // Récupérer un utilisateur par son ID
-    public Optional<Utilisateur> getUserById(Long id) {
-        return utilisateurRepository.findById(id);
-    }
-
-    // Créer un utilisateur
-    public Utilisateur createUser(Utilisateur utilisateur) {
+    public Utilisateur createUtilisateur(Utilisateur utilisateur) {
+        if (utilisateur.getEmail() == null || utilisateur.getPassword() == null) {
+            throw new IllegalArgumentException("Email and password are required");
+        }
         return utilisateurRepository.save(utilisateur);
     }
 
-    // Mettre à jour un utilisateur
-    public Utilisateur updateUser(Long id, Utilisateur utilisateur) {
+    public List<Utilisateur> getAllUtilisateurs() {
+        return utilisateurRepository.findAll();
+    }
+
+    public Optional<Utilisateur> getUtilisateurById(Long id) {
+        return utilisateurRepository.findById(id);
+    }
+
+    public Utilisateur updateUtilisateur(Long id, Utilisateur utilisateur) {
+        if (utilisateur.getEmail() == null || utilisateur.getPassword() == null) {
+            throw new IllegalArgumentException("Email and password are required");
+        }
         if (utilisateurRepository.existsById(id)) {
             utilisateur.setId(id);
             return utilisateurRepository.save(utilisateur);
         }
-        return null; // Si l'utilisateur n'existe pas
+        return null;
     }
 
-    // Supprimer un utilisateur
-    public void deleteUser(Long id) {
+    public void deleteUtilisateur(Long id) {
+        if (!utilisateurRepository.existsById(id)) {
+            throw new IllegalArgumentException("User not found");
+        }
         utilisateurRepository.deleteById(id);
+    }
+
+    public Utilisateur getUtilisateurByEmail(String email) {
+        return utilisateurRepository.findByEmail(email);
+    }
+
+    public List<Utilisateur> getUtilisateursByRole(String role) {
+        try {
+            UtilisateurRole enumRole = UtilisateurRole.valueOf(role.toUpperCase());
+            return utilisateurRepository.findByRole(enumRole);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Invalid role: " + role);
+        }
+    }
+
+    public List<Utilisateur> getUtilisateursByEstActif(Boolean estActif) {
+        return utilisateurRepository.findByEstActif(estActif);
     }
 }

@@ -1,5 +1,4 @@
 com\cmoconnect\backendweb\model\PaymentFormation.class
-com\cmoconnect\backendweb\model\PaymentsAbonnement.class
 com\cmoconnect\backendweb\model\MessageIntern.class
 com\cmoconnect\backendweb\model\Utilisateur.class
 com\cmoconnect\backendweb\controller\PaymentAbonnementController.class
@@ -27,6 +26,7 @@ com\cmoconnect\backendweb\controller\CommentFormationController.class
 com\cmoconnect\backendweb\model\CondidatureStatus.class
 com\cmoconnect\backendweb\service\NoteFormationService.class
 com\cmoconnect\backendweb\repository\PaymentAbonnementRepository.class
+com\cmoconnect\backendweb\controller\TypePayAbonnementController.class
 com\cmoconnect\backendweb\config\WebConfig.class
 com\cmoconnect\backendweb\service\AbonnementService.class
 com\cmoconnect\backendweb\service\ChapitreService.class
@@ -43,6 +43,7 @@ com\cmoconnect\backendweb\service\CommentFormationService.class
 com\cmoconnect\backendweb\model\Certificat.class
 com\cmoconnect\backendweb\controller\FormationUtilisateurController.class
 com\cmoconnect\backendweb\model\CommentFormation.class
+com\cmoconnect\backendweb\model\PaymentAbonnement.class
 com\cmoconnect\backendweb\repository\TypePayAbonnementRepository.class
 com\cmoconnect\backendweb\model\Notification.class
 com\cmoconnect\backendweb\model\FavoriteOffre.class

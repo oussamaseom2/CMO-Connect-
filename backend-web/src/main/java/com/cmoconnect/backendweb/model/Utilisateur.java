@@ -1,36 +1,75 @@
 package com.cmoconnect.backendweb.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
-
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table(name = "utilisateur")
 public class Utilisateur {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name = "id", nullable = false, updatable = false)
+private Long id;
 
+    @Column(nullable = false)
     private String nom;
-    private String prenom;
-    private String password;
-    private Date dateInscription;
-    private Date derniereDateConn;
-    private String tel;
-    private String photo;
-    private String cv;
-    private String autoProvider;
 
-    @ElementCollection
-    private List<String> portFolios;
+    @Column(nullable = false)
+    private String prenom;
+
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    private Boolean estActif = true;
+
+    private String tel;
+
+    private String photo;
+
+    private String cv;
+
+    private String autoProvider = "local";
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "utilisateur_portfolios", joinColumns = @JoinColumn(name = "utilisateur_id"))
+    @Column(name = "portfolio_url")
+    private List<String> portFolios = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
-    private UtilisateurRole role;
+    @Column(nullable = false)
+    private UtilisateurRole role = UtilisateurRole.USER;
 
-    @ManyToMany(mappedBy = "utilisateursRecommandes")
-    private Set<Recommendation> recommandations;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
+    private Date dateInscription = new Date();
+
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
+    private Date derniereDateConn = new Date();
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "utilisateur_recommendation",
+        joinColumns = @JoinColumn(name = "utilisateur_id"),
+        inverseJoinColumns = @JoinColumn(name = "recommendation_id")
+    )
+    private Set<Recommendation> recommandations = new HashSet<>();
+
+    // Default constructor
+    public Utilisateur() {
+    }
 
     // Getters and setters
     public Long getId() {
@@ -57,6 +96,14 @@ public class Utilisateur {
         this.prenom = prenom;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -65,20 +112,12 @@ public class Utilisateur {
         this.password = password;
     }
 
-    public Date getDateInscription() {
-        return dateInscription;
+    public Boolean getEstActif() {
+        return estActif;
     }
 
-    public void setDateInscription(Date dateInscription) {
-        this.dateInscription = dateInscription;
-    }
-
-    public Date getDerniereDateConn() {
-        return derniereDateConn;
-    }
-
-    public void setDerniereDateConn(Date derniereDateConn) {
-        this.derniereDateConn = derniereDateConn;
+    public void setEstActif(Boolean estActif) {
+        this.estActif = estActif;
     }
 
     public String getTel() {
@@ -118,7 +157,7 @@ public class Utilisateur {
     }
 
     public void setPortFolios(List<String> portFolios) {
-        this.portFolios = portFolios;
+        this.portFolios = portFolios != null ? portFolios : new ArrayList<>();
     }
 
     public UtilisateurRole getRole() {
@@ -129,12 +168,27 @@ public class Utilisateur {
         this.role = role;
     }
 
+    public Date getDateInscription() {
+        return dateInscription;
+    }
+
+    public void setDateInscription(Date dateInscription) {
+        this.dateInscription = dateInscription;
+    }
+
+    public Date getDerniereDateConn() {
+        return derniereDateConn;
+    }
+
+    public void setDerniereDateConn(Date derniereDateConn) {
+        this.derniereDateConn = derniereDateConn;
+    }
+
     public Set<Recommendation> getRecommandations() {
         return recommandations;
     }
 
     public void setRecommandations(Set<Recommendation> recommandations) {
-        this.recommandations = recommandations;
+        this.recommandations = recommandations != null ? recommandations : new HashSet<>();
     }
 }
-

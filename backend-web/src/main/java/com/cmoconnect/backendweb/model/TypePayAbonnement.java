@@ -1,17 +1,18 @@
 package com.cmoconnect.backendweb.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 public class TypePayAbonnement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String type;  // Type de paiement (par exemple, "Carte bancaire", "PayPal")
-
-    // Getters et Setters
+    private String nom;
+    private String description;
+    private Double prix;
+    private Integer duree; // en jours
+    private Boolean estActif;
 }

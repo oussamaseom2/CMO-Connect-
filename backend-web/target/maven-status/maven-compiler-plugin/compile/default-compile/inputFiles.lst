@@ -9,6 +9,7 @@ C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\ba
 C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\controller\FormationUtilisateurController.java
 C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\controller\NoteFormationController.java
 C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\controller\PaymentAbonnementController.java
+C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\controller\TypePayAbonnementController.java
 C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\controller\UtilisateurController.java
 C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\model\Abonnement.java
 C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\model\Certificat.java
@@ -26,8 +27,8 @@ C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\ba
 C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\model\Notification.java
 C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\model\Offre.java
 C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\model\OffreCompetenceRequired.java
+C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\model\PaymentAbonnement.java
 C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\model\PaymentFormation.java
-C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\model\PaymentsAbonnement.java
 C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\model\ReactionOffre.java
 C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\model\Recommendation.java
 C:\Users\hp\IdeaProjects\CMO connect\backend-web\src\main\java\com\cmoconnect\backendweb\model\TypeOffre.java

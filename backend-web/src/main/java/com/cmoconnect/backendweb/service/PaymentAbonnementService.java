@@ -1,31 +1,34 @@
 package com.cmoconnect.backendweb.service;
 
-import com.cmoconnect.backendweb.model.PaymentsAbonnement;
+import com.cmoconnect.backendweb.model.PaymentAbonnement;
 import com.cmoconnect.backendweb.repository.PaymentAbonnementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@Transactional
 public class PaymentAbonnementService {
 
     @Autowired
     private PaymentAbonnementRepository paymentAbonnementRepository;
 
-    public PaymentsAbonnement createPaymentAbonnement(PaymentsAbonnement paymentAbonnement) {
+    public PaymentAbonnement createPaymentAbonnement(PaymentAbonnement paymentAbonnement) {
         return paymentAbonnementRepository.save(paymentAbonnement);
     }
 
-    public List<PaymentsAbonnement> getAllPaymentAbonnements() {
+    public List<PaymentAbonnement> getAllPaymentAbonnements() {
         return paymentAbonnementRepository.findAll();
     }
 
-    public PaymentsAbonnement getPaymentAbonnementById(Long id) {
-        return paymentAbonnementRepository.findById(id).orElse(null);
+    public Optional<PaymentAbonnement> getPaymentAbonnementById(Long id) {
+        return paymentAbonnementRepository.findById(id);
     }
 
-    public PaymentsAbonnement updatePaymentAbonnement(Long id, PaymentsAbonnement paymentAbonnement) {
+    public PaymentAbonnement updatePaymentAbonnement(Long id, PaymentAbonnement paymentAbonnement) {
         if (paymentAbonnementRepository.existsById(id)) {
             paymentAbonnement.setId(id);
             return paymentAbonnementRepository.save(paymentAbonnement);
@@ -37,7 +40,7 @@ public class PaymentAbonnementService {
         paymentAbonnementRepository.deleteById(id);
     }
 
-    public List<PaymentsAbonnement> getPaymentsByUtilisateur(Long utilisateurId) {
+    public List<PaymentAbonnement> getPaymentsByUtilisateur(Long utilisateurId) {
         return paymentAbonnementRepository.findByUtilisateurId(utilisateurId);
     }
 }
